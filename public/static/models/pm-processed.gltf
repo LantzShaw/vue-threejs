@@ -1,0 +1,230 @@
+{
+  "accessors": [
+    {
+      "name": "Line63_1_0_indices",
+      "componentType": 5123,
+      "count": 216,
+      "min": [
+        0
+      ],
+      "max": [
+        131
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "name": "Line63_1_0_positions",
+      "componentType": 5126,
+      "count": 132,
+      "min": [
+        221473.75936584026,
+        -12.81875915974597,
+        -8182.849032597246
+      ],
+      "max": [
+        247739.39688415974,
+        410.200293111871,
+        1085.1138398990897
+      ],
+      "type": "VEC3"
+    },
+    {
+      "name": "Line63_1_0_normals",
+      "componentType": 5126,
+      "count": 132,
+      "min": [
+        -1.007843137254902,
+        -1.007843137254902,
+        -1.007843137254902
+      ],
+      "max": [
+        1.007843137254902,
+        1.007843137254902,
+        1.007843137254902
+      ],
+      "type": "VEC3"
+    },
+    {
+      "name": "Rectangle8561_1_0_indices",
+      "componentType": 5123,
+      "count": 6,
+      "min": [
+        0
+      ],
+      "max": [
+        3
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "name": "Rectangle8561_1_0_positions",
+      "componentType": 5126,
+      "count": 4,
+      "min": [
+        221473.75936584026,
+        -12.81875915974597,
+        -8182.844638065996
+      ],
+      "max": [
+        247739.39688415974,
+        12.81875915974597,
+        1085.1182344303397
+      ],
+      "type": "VEC3"
+    },
+    {
+      "name": "Rectangle8561_1_0_normals",
+      "componentType": 5126,
+      "count": 4,
+      "min": [
+        -0.00392156862745098,
+        0.996078431372549,
+        -0.00392156862745098
+      ],
+      "max": [
+        0.00392156862745098,
+        1.003921568627451,
+        0.00392156862745098
+      ],
+      "type": "VEC3"
+    }
+  ],
+  "asset": {
+    "generator": "obj2gltf",
+    "version": "2.0"
+  },
+  "buffers": [
+    {
+      "name": "pm-processed",
+      "byteLength": 368,
+      "uri": "data:application/octet-stream;base64,RFJBQ08CAgEBAAAALEgBRAUAEm+rhfdRxfdU8ajiffvQoqlCAQECQEBkDyA1V9/59YBYstL5Rl/fQQL/AAAAAQABAAkDAAACAQEJAwABAwEBAQEF3Qj5IXyLVQXZBHx8T10EXQT//wt8/1N8k3z//3N8D3x/+A98/0/4fHwn+Pj//798k3z/////Y3x8MAQVxQce/3js5r+l/P25QS0ewjSQRUIuaos2aWy045x1LLgjExsj5ixr6TclUbIihAAAAAD/BwAApUtYSAAAAAA+UP/FAADNRgsGAwEBAQEBQAEA/wAAAH8AAAD/AihLCAAARFJBQ08CAgEBAAAABAIBAgAAAS//ARH/AREC/wAAAAAAAQAJAwAAAgEBCQMAAQMBAQEADAMBEAEQHwEgAwDcjwAAgGgDAIDQCgAAAAAA/wcAAKVLWEgAAAAANVD/xQAAzUYLBgMBAQEBAUABAP8AAAB/AAAA/wJEQAgAAAAAAAA="
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteOffset": 0,
+      "byteLength": 238
+    },
+    {
+      "buffer": 0,
+      "byteOffset": 240,
+      "byteLength": 122
+    }
+  ],
+  "materials": [
+    {
+      "name": "____",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.7843,
+          0.7608,
+          0.7059,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.99
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    },
+    {
+      "name": "21___Default",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.5882,
+          0.5882,
+          0.5882,
+          1
+        ],
+        "metallicFactor": 0,
+        "roughnessFactor": 0.99
+      },
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "alphaMode": "OPAQUE",
+      "doubleSided": false
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Line63_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 1,
+            "NORMAL": 2
+          },
+          "indices": 0,
+          "material": 0,
+          "mode": 4,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 0,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Rectangle8561_1",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 4,
+            "NORMAL": 5
+          },
+          "indices": 3,
+          "material": 1,
+          "mode": 4,
+          "extensions": {
+            "KHR_draco_mesh_compression": {
+              "bufferView": 1,
+              "attributes": {
+                "POSITION": 0,
+                "NORMAL": 1
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "name": "Line63",
+      "mesh": 0
+    },
+    {
+      "name": "Rectangle8561",
+      "mesh": 1
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "nodes": [
+        0,
+        1
+      ]
+    }
+  ],
+  "extensionsRequired": [
+    "KHR_draco_mesh_compression"
+  ],
+  "extensionsUsed": [
+    "KHR_draco_mesh_compression"
+  ]
+}
