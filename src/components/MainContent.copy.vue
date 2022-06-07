@@ -14,6 +14,7 @@ const emit = defineEmits(['on-change'])
 
 let scene = null
 let camera = null
+let mesh = null
 let renderer = null
 let raycaster = null
 let mouse = null
@@ -76,13 +77,11 @@ const initCamera = () => {
 
   // 三维场景显示范围控制系数，系数越大，显示的范围越大
   // const s = 8
-  const s = 9
+  const s = 10
 
-  // TODO: 设置为3000，方便相机旋转
-  camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 3000)
+  camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 2000)
 
-  // camera.position.set(-50, 1300, -1500)
-  camera.position.set(650, 1450, -1500)
+  camera.position.set(-50, 1300, -1500)
 
   // 让相机指向原点
   camera.lookAt(new THREE.Vector3(0, 0, 0))
@@ -98,9 +97,8 @@ const loadFloorModel = () => {
   gltfLoader.load('pm-processed.gltf', gltf => {
     gltf.scene.scale.set(0.00084, 0.001, 0.001)
 
-    // gltf.scene.position.set(-190, -0.1, 5)
-    // gltf.scene.position.set(-196.5, -0.1, 4)
-    gltf.scene.position.set(-200.5, -0.1, 4)
+    //   gltf.scene.position.set(-190, -0.1, 5)
+    gltf.scene.position.set(-196.5, -0.1, 4)
 
     scene.add(gltf.scene)
   })
@@ -110,9 +108,9 @@ const loadSecondFloorModel = () => {
   gltfLoader.load('pm-2-processed.gltf', gltf => {
     gltf.scene.scale.set(0.00084, 0.001, 0.001)
 
-    // gltf.scene.position.set(-190, -0.1, 5)
+    //   gltf.scene.position.set(-190, -0.1, 5)
     // gltf.scene.position.set(-150, -0.1, 4)
-    gltf.scene.position.set(-145, -0.1, 4)
+    gltf.scene.position.set(-140, -0.1, 4)
 
     scene.add(gltf.scene)
   })
@@ -130,7 +128,7 @@ const loadFirstModel = () => {
       })
 
       gltf.scene.scale.set(0.00084, 0.001, 0.001)
-      gltf.scene.position.set(-200.5, 0, 3.8) // 正常
+      gltf.scene.position.set(-196.5, 0, 3.8) // 正常
       // gltf.scene.rotation.set(-10, 0, 0)
 
       gltf.scene.name = 'B-' + i
@@ -162,7 +160,7 @@ const loadSecondModel = () => {
       // gltf.scene.scale.set(0.0008, 0.0008, -0.00084)
       gltf.scene.scale.set(0.00084, 0.001, 0.001)
 
-      gltf.scene.position.set(-200.5, 0, 4) // 正常
+      gltf.scene.position.set(-196.5, 0, 4) // 正常
 
       gltf.scene.name = 'A' + i
 
@@ -191,7 +189,7 @@ const loadThirdModel = () => {
 
       gltf.scene.scale.set(0.00084, 0.001, 0.001)
 
-      gltf.scene.position.set(-200.5, 0, 3.8) // 正常
+      gltf.scene.position.set(-196.5, 0, 3.8) // 正常
 
       gltf.scene.name = 'C' + i
 
@@ -201,122 +199,6 @@ const loadThirdModel = () => {
 
       gltf.userData = {
         name: `CH` + i,
-      }
-
-      scene.add(gltf.scene)
-
-      render()
-    })
-  }
-}
-
-const loadFourthModel = () => {
-  for (let i = 1; i <= 5; i++) {
-    gltfLoader.load(`4-${i}-processed.gltf`, function (gltf) {
-      gltf.scene.traverse(function (child) {
-        if (child.isMesh) {
-        }
-      })
-
-      gltf.scene.scale.set(0.00084, 0.001, -0.001)
-
-      gltf.scene.position.set(-145.5, 0, -4.8) // 正常
-
-      gltf.scene.name = 'D' + i
-
-      gltf.$data = {
-        name: `DH-${i}`,
-      }
-
-      gltf.userData = {
-        name: `DH` + i,
-      }
-
-      scene.add(gltf.scene)
-
-      render()
-    })
-  }
-}
-
-const loadFifthModel = () => {
-  for (let i = 1; i <= 5; i++) {
-    gltfLoader.load(`5-${i}-processed.gltf`, function (gltf) {
-      gltf.scene.traverse(function (child) {
-        if (child.isMesh) {
-        }
-      })
-
-      gltf.scene.scale.set(0.00084, 0.001, -0.001)
-
-      gltf.scene.position.set(-145.5, 0, -3.8) // 正常
-
-      gltf.scene.name = 'D' + i
-
-      gltf.$data = {
-        name: `DH-${i}`,
-      }
-
-      gltf.userData = {
-        name: `DH` + i,
-      }
-
-      scene.add(gltf.scene)
-
-      render()
-    })
-  }
-}
-
-const loadSixthModel = () => {
-  for (let i = 1; i <= 5; i++) {
-    gltfLoader.load(`6-${i}-processed.gltf`, function (gltf) {
-      gltf.scene.traverse(function (child) {
-        if (child.isMesh) {
-        }
-      })
-
-      gltf.scene.scale.set(0.00084, 0.001, -0.001)
-
-      gltf.scene.position.set(-145.5, 0, -2.8) // 正常
-
-      gltf.scene.name = 'D' + i
-
-      gltf.$data = {
-        name: `DH-${i}`,
-      }
-
-      gltf.userData = {
-        name: `DH` + i,
-      }
-
-      scene.add(gltf.scene)
-
-      render()
-    })
-  }
-}
-
-const loadSeventhhModel = () => {
-  for (let i = 1; i <= 5; i++) {
-    gltfLoader.load(`7-${i}-processed.gltf`, function (gltf) {
-      gltf.scene.traverse(function (child) {
-        if (child.isMesh) {
-        }
-      })
-
-      gltf.scene.scale.set(0.00084, 0.001, -0.001)
-
-      gltf.scene.position.set(-145.5, 0, -1.8) // 正常
-
-      gltf.scene.name = 'D' + i
-
-      gltf.$data = {
-        name: `DH-${i}`,
-      }
-
-      gltf.userData = {
-        name: `DH` + i,
       }
 
       scene.add(gltf.scene)
@@ -370,6 +252,12 @@ const changeColor = () => {
     if (obj[i].id == selectedModel.cid) {
       for (let j = 0; j < obj[i].children.length; j++) {
         if (obj[i].children[j].id == selectedModel.aid) {
+          console.log(
+            selectedModel.color.r,
+            selectedModel.color.g,
+            selectedModel.color.b,
+            'changeColor'
+          )
           obj[i].children[j].material.color.r = selectedModel.color.r
           obj[i].children[j].material.color.g = selectedModel.color.g
           obj[i].children[j].material.color.b = selectedModel.color.b
@@ -392,7 +280,7 @@ const clickModel = event => {
 
   // const intersects = raycaster.intersectObject(scene, true)
 
-  // 参数1：检测对象，参数2：是否检测该对象的children
+  //参数1：检测对象，参数2：是否检测该对象的children
   const intersects = raycaster.intersectObjects(scene.children, true)
 
   // 判断是否进行了操作
@@ -402,23 +290,21 @@ const clickModel = event => {
     const res = intersects[0]
 
     if (res) {
-      selectedModel.name = res.object.parent.name
-
       if (selectedModel.aid) {
         if (selectedModel.aid !== res.object.id) {
           changeColor()
           assignmentActive(res.object)
           res.object.material.color.set(0xffffff)
 
-          // activeCabinetID = res.object.parent.$data.name
-          // changeActiveCabinet();
+          emit('on-change', true)
+          //   activeCabinetID = res.object.parent.$data.name
+          //   changeActiveCabinet();
         }
-        emit('on-change', { show: true, name: selectedModel.name })
       } else {
         assignmentActive(res.object)
         res.object.material.color.set(0xffffff)
 
-        emit('on-change', { show: true, name: selectedModel.name })
+        emit('on-change', true)
         // activeCabinetID = res.object.parent.$data.name
         // changeActiveCabinet();
       }
@@ -427,7 +313,7 @@ const clickModel = event => {
       render()
     }
   } else {
-    emit('on-change', { show: false, name: '' })
+    emit('on-change', false)
   }
 }
 
@@ -435,8 +321,8 @@ onMounted(() => {
   init()
 
   // 红色代表 X 轴. 绿色代表 Y 轴. 蓝色代表 Z 轴.
-  // const axesHelper = new THREE.AxesHelper(500)
-  // scene.add(axesHelper)
+  const axesHelper = new THREE.AxesHelper(500)
+  scene.add(axesHelper)
 
   loadFloorModel()
 
@@ -447,14 +333,6 @@ onMounted(() => {
   loadSecondModel()
 
   loadThirdModel()
-
-  loadFourthModel()
-
-  loadFifthModel()
-
-  loadSixthModel()
-
-  loadSeventhhModel()
 
   window.addEventListener('resize', onWindowResize, false)
 

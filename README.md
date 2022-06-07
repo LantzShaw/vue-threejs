@@ -7,9 +7,6 @@ This template should help get you started developing with Vue 3 in Vite. The tem
 - [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
 
 
-
-
-
 **文章参考**
 
 https://blog.csdn.net/qq_42987283/article/details/122728409
@@ -84,7 +81,7 @@ const mtlLoader = new MTLLoader()
 
 // GLTFLoader与DRACOLoader结合使用
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader' // 加载gltf
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader' // 将压缩了的gltf，进行解密
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader' // 将压缩了的gltf，进行解码
 
 
 // 可以放在全局声明
@@ -224,3 +221,13 @@ if (res) {
 renderer.domElement.addEventListener('click', clickModel, false)
 //   window.addEventListener('click', clickModel, false)
 ```
+
+
+
+
+ <!-- http://115.231.168.146:8186/cms/bigDataScreen/getCabinetInfoCurve?msType=AH202&type=NULL -->
+
+
+ http://115.231.168.146:8186/cms/bigDataScreen/getCabinetInfoR?msType=AH202
+
+ <!-- /bigDataScreen/getCabinetInfoR -->
