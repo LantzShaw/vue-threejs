@@ -7,7 +7,6 @@ import { onMounted, onUnmounted } from 'vue'
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
-
 import { OrbitControls } from '@/common/tool/OrbitControls'
 
 const emit = defineEmits(['on-change'])
@@ -94,7 +93,7 @@ const initCamera = () => {
 /**
  * 加载地板模型
  */
-const loadFloorModel = () => {
+const loadFirstFloorModel = () => {
   gltfLoader.load('pm-processed.gltf', gltf => {
     gltf.scene.scale.set(0.00084, 0.001, 0.001)
 
@@ -122,35 +121,6 @@ const loadSecondFloorModel = () => {
  * 加载gltf压缩后的模型
  */
 const loadFirstModel = () => {
-  for (let i = 1; i <= 12; i++) {
-    gltfLoader.load(`2-${i}-processed.gltf`, function (gltf) {
-      gltf.scene.traverse(function (child) {
-        if (child.isMesh) {
-        }
-      })
-
-      gltf.scene.scale.set(0.00084, 0.001, 0.001)
-      gltf.scene.position.set(-200.5, 0, 3.8) // 正常
-      // gltf.scene.rotation.set(-10, 0, 0)
-
-      gltf.scene.name = 'B-' + i
-
-      gltf.$data = {
-        name: `BH8 ${i}`,
-      }
-
-      gltf.userData = {
-        name: `BH` + i,
-      }
-
-      scene.add(gltf.scene)
-
-      render()
-    })
-  }
-}
-
-const loadSecondModel = () => {
   for (let i = 1; i <= 26; i++) {
     gltfLoader.load(`1-${i}-processed.gltf`, function (gltf) {
       gltf.scene.traverse(function (child) {
@@ -164,14 +134,35 @@ const loadSecondModel = () => {
 
       gltf.scene.position.set(-200.5, 0, 4) // 正常
 
-      gltf.scene.name = 'A' + i
-
-      gltf.$data = {
-        name: `AH-${i}`,
-      }
+      gltf.scene.name = 'ZC_A_SBR_' + i
 
       gltf.userData = {
-        name: `AH` + i,
+        name: `ZC_A_SBR_` + i,
+      }
+
+      scene.add(gltf.scene)
+
+      render()
+    })
+  }
+}
+
+const loadSecondModel = () => {
+  for (let i = 1; i <= 12; i++) {
+    gltfLoader.load(`2-${i}-processed.gltf`, function (gltf) {
+      gltf.scene.traverse(function (child) {
+        if (child.isMesh) {
+        }
+      })
+
+      gltf.scene.scale.set(0.00084, 0.001, 0.001)
+      gltf.scene.position.set(-200.5, 0, 3.8) // 正常
+      // gltf.scene.rotation.set(-10, 0, 0)
+
+      gltf.scene.name = 'ZC_B_SBR_' + i
+
+      gltf.userData = {
+        name: `ZC_B_SBR_` + i,
       }
 
       scene.add(gltf.scene)
@@ -193,14 +184,10 @@ const loadThirdModel = () => {
 
       gltf.scene.position.set(-200.5, 0, 3.8) // 正常
 
-      gltf.scene.name = 'C' + i
-
-      gltf.$data = {
-        name: `CH-${i}`,
-      }
+      gltf.scene.name = 'ZC_C_SBR_' + i
 
       gltf.userData = {
-        name: `CH` + i,
+        name: `ZC_C_SBR_` + i,
       }
 
       scene.add(gltf.scene)
@@ -222,14 +209,10 @@ const loadFourthModel = () => {
 
       gltf.scene.position.set(-145.5, 0, -4.8) // 正常
 
-      gltf.scene.name = 'D' + i
-
-      gltf.$data = {
-        name: `DH-${i}`,
-      }
+      gltf.scene.name = 'ZC_D_SBR_' + i
 
       gltf.userData = {
-        name: `DH` + i,
+        name: `ZC_D_SBR_` + i,
       }
 
       scene.add(gltf.scene)
@@ -251,14 +234,10 @@ const loadFifthModel = () => {
 
       gltf.scene.position.set(-145.5, 0, -3.8) // 正常
 
-      gltf.scene.name = 'D' + i
-
-      gltf.$data = {
-        name: `DH-${i}`,
-      }
+      gltf.scene.name = 'ZC_E_SBR_' + i
 
       gltf.userData = {
-        name: `DH` + i,
+        name: `ZC_E_SBR_` + i,
       }
 
       scene.add(gltf.scene)
@@ -280,14 +259,10 @@ const loadSixthModel = () => {
 
       gltf.scene.position.set(-145.5, 0, -2.8) // 正常
 
-      gltf.scene.name = 'D' + i
-
-      gltf.$data = {
-        name: `DH-${i}`,
-      }
+      gltf.scene.name = 'ZC_F_SBR_' + i
 
       gltf.userData = {
-        name: `DH` + i,
+        name: `ZC_F_SBR_` + i,
       }
 
       scene.add(gltf.scene)
@@ -309,14 +284,10 @@ const loadSeventhhModel = () => {
 
       gltf.scene.position.set(-145.5, 0, -1.8) // 正常
 
-      gltf.scene.name = 'D' + i
-
-      gltf.$data = {
-        name: `DH-${i}`,
-      }
+      gltf.scene.name = 'ZC_G_SBR_' + i
 
       gltf.userData = {
-        name: `DH` + i,
+        name: `ZC_G_SBR_` + i,
       }
 
       scene.add(gltf.scene)
@@ -364,12 +335,12 @@ const initRaycater = () => {
 }
 
 const changeColor = () => {
-  let obj = scene.children
+  const obj = scene.children
 
   for (let i = 0; i < obj.length; i++) {
-    if (obj[i].id == selectedModel.cid) {
+    if (obj[i].id === selectedModel.cid) {
       for (let j = 0; j < obj[i].children.length; j++) {
-        if (obj[i].children[j].id == selectedModel.aid) {
+        if (obj[i].children[j].id === selectedModel.aid) {
           obj[i].children[j].material.color.r = selectedModel.color.r
           obj[i].children[j].material.color.g = selectedModel.color.g
           obj[i].children[j].material.color.b = selectedModel.color.b
@@ -401,7 +372,7 @@ const clickModel = event => {
 
     const res = intersects[0]
 
-    if (res) {
+    if (res && res.object.parent.name) {
       selectedModel.name = res.object.parent.name
 
       if (selectedModel.aid) {
@@ -438,7 +409,7 @@ onMounted(() => {
   // const axesHelper = new THREE.AxesHelper(500)
   // scene.add(axesHelper)
 
-  loadFloorModel()
+  loadFirstFloorModel()
 
   loadSecondFloorModel()
 

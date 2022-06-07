@@ -23,7 +23,7 @@ import { ref } from 'vue'
 import Header from '@/components/Header.vue'
 import LeftContent from '@/components/LeftContent.vue'
 import RightContent from '@/components/RightContent.vue'
-import MainContent from '../../components/MainContent.vue'
+import MainContent from '@/components/MainContent.vue'
 
 const isShow = ref(false)
 const id = ref('')
@@ -31,7 +31,7 @@ const id = ref('')
 const changeHandler = params => {
   const { show, name } = params
 
-  console.log('hello world', params)
+  console.log('------------params------------', params)
 
   isShow.value = show
   id.value = name
