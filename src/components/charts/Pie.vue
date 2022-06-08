@@ -44,9 +44,9 @@ const option = ref({
       radius: '70%',
       center: ['50%', '55%'],
       data: [
-        { value: 335, name: '尖' },
-        { value: 310, name: '峰' },
-        { value: 234, name: '谷' },
+        { value: 0, name: '尖' },
+        { value: 0, name: '峰' },
+        { value: 0, name: '谷' },
       ],
       label: {
         color: '#7CE8FA',
@@ -66,5 +66,6 @@ const option = ref({
 <style scoped>
 .chart {
   height: 400px;
+  width: 400px;
 }
 </style>

@@ -16,7 +16,7 @@ import {
   GridComponent,
 } from 'echarts/components'
 import VChart from 'vue-echarts'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 
 use([CanvasRenderer, LineChart, TitleComponent, TooltipComponent, LegendComponent, GridComponent])
 
@@ -29,9 +29,16 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  chartData: {
+    type: Object,
+    default: () => ({
+      xaxis: [],
+      data: [],
+    }),
+  },
 })
 
-const option = ref('')
+const option = ref({})
 
 const setOption = () => {
   option.value = {
@@ -103,7 +110,7 @@ const setOption = () => {
     },
     xAxis: {
       type: 'category',
-      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      data: props.chartData.xaxis,
       axisLine: {
         lineStyle: {
           color: '#005582',
@@ -134,7 +141,7 @@ const setOption = () => {
       {
         name: 'A相',
         type: 'line',
-        data: [12, 123, 123, 320],
+        data: props.chartData.data[0],
         areaStyle: {
           show: true,
         },
@@ -171,7 +178,7 @@ const setOption = () => {
       {
         name: 'B相',
         type: 'line',
-        data: [120, 113, 103, 32],
+        data: props.chartData.data[1],
         areaStyle: {
           show: true,
         },
@@ -208,7 +215,7 @@ const setOption = () => {
       {
         name: 'C相',
         type: 'line',
-        data: [122, 143, 153, 330],
+        data: props.chartData.data[2],
         areaStyle: {
           show: true,
         },
@@ -246,6 +253,12 @@ const setOption = () => {
   }
 }
 
+// TODO: 更新图表数据
+// watch(() => props.chartData, () => {setOption()}) // 这样监听无效
+watch(props.chartData, () => {
+  setOption()
+})
+
 onMounted(() => {
   setOption()
 })
@@ -254,5 +267,6 @@ onMounted(() => {
 <style scoped>
 .chart {
   height: 265px;
+  width: 400px;
 }
 </style>

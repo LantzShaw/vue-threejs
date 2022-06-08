@@ -1,27 +1,87 @@
 <template>
   <div class="header-container">
     <div class="header-left">
-      <span class="digit">2020</span>
+      <span class="digit">{{ year }}</span>
       <span style="margin: 0 8px">年</span>
-      <span class="digit">9</span>
+      <span class="digit">{{ month }}</span>
       <span style="margin: 0 8px">月</span>
-      <span class="digit">6</span>
+      <span class="digit">{{ day }}</span>
       <span style="margin: 0 8px">日</span>
 
       <span style="margin-left: 32px">星期</span>
-      <span class="digit">二</span>
+      <span class="digit">{{ week }}</span>
 
-      <span class="digit" style="margin-left: 32px; font-size: 20px">12:00:00</span>
+      <span class="digit" style="margin-left: 32px; font-size: 20px">{{ time }}</span>
     </div>
     <div class="header-cneter">中驰能源管理平台</div>
     <div class="header-right">
-      <span style="margin-right: 10px; color: rgba(255, 255, 255, 0.8)">晴</span>
-      <span style="color: #7ce8fa">20-23℃</span>
+      <span style="cursor: pointer" @click="navigateHandler">
+        <img
+          src="../assets/images/home.png"
+          style="width: 18px; height: 18px; vertical-align: middle"
+        />
+      </span>
+      <span style="margin: 0 10px; color: rgba(255, 255, 255, 0.8); vertical-align: middle">
+        {{ weather }}
+      </span>
+      <span style="color: #7ce8fa; vertical-align: middle">{{ temperature }}℃</span>
     </div>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
+import { encode } from 'js-base64'
+import dayjs from 'dayjs'
+import 'dayjs/locale/zh-cn'
+
+const year = ref(dayjs().year())
+const month = ref(dayjs().month())
+const day = ref(dayjs().date())
+const week = ref(dayjs().locale('zh-cn').format('dddd').substring(2, 3))
+const time = ref(dayjs().format('HH:mm:ss'))
+const temperature = ref('')
+const weather = ref('')
+
+let timer = null
+
+const getWeather = () => {
+  const url = 'http://www.yiketianqi.com/api?version=v9&appid=62646242&appsecret=N0FdA3vk'
+
+  fetch(url)
+    .then(res => {
+      return res.json()
+    })
+    .then(res => {
+      console.log('----weather----', res)
+      const { wea, tem1, tem2 } = res.data[0]
+
+      temperature.value = `${tem2}-${tem1}`
+
+      weather.value = wea
+    })
+}
+
+const navigateHandler = () => {
+  // window.open('http://115.231.168.146:8001/user/login?username=Lantz')
+  window.open(`http://localhost:3001/user/login?red=${encode('mysecret')}`)
+  // window.location.href = 'http://192.168.5.19:8081/'
+}
+
+onMounted(() => {
+  getWeather()
+  if (timer) {
+    clearInterval(timer)
+  }
+  timer = setInterval(() => {
+    time.value = dayjs().format('HH:mm:ss')
+  }, 1000)
+})
+
+onUnmounted(() => {
+  clearInterval(timer)
+})
+</script>
 
 <style scoped>
 .header-container {
@@ -64,5 +124,6 @@
   padding-top: 8px;
   padding-right: 20px;
   text-align: right;
+  vertical-align: middle;
 }
 </style>
